@@ -13,7 +13,7 @@
     assemble:
       remote_src: False
       src: "apps/{{item[0]}}/{{item[1]}}/"
-      dest: /Users/crenshaw/Desktop/sc/ansible-as3-app-files/tmp/{{item[0]}}-{{item[1]}}_combined.yaml
+      dest: /Users/test/Desktop/Demo/ansible-as3-builder/tmp/{{item[0]}}-{{item[1]}}_combined.yaml
       delimiter: ","
       # validate: 'ls %s'
     with_nested:
@@ -36,16 +36,16 @@
       url: "https://{{ groups[item.split('-')[0]][0] }}:{{hostvars[groups[item.split('-')[0]][0]]['f5_admin_port']}}/mgmt/shared/appsvcs/declare"
       method: POST
       user: "admin"
-      password: "{{ f5_password }}"
+      password: "{{ hostvars[groups[item.split('-')[0]][0]]['f5_password'] }}"
       validate_certs: no
       body: "{{ lookup('template', 'j2/tenant_base.j2') }}"
       body_format: json
     with_items:
       - "{{dir_out.stdout_lines}}"
   
-  - name: Remove Temporary Combined File
-    file:
-      path: tmp/{{item}}
-      state: absent
-    with_items:
-      - "{{dir_out.stdout_lines}}"
+  # - name: Remove Temporary Combined File
+  #   file:
+  #     path: tmp/{{item}}
+  #     state: absent
+  #   with_items:
+  #     - "{{dir_out.stdout_lines}}"
