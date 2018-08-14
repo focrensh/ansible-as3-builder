@@ -1,0 +1,15 @@
+app_name: App2
+tenant: Tenant1
+app_template: tcp_app_wholee
+app_port: 22
+server_port: 22
+app_locations:
+  - datacenter_name: aws
+    vip_address: 10.1.0.101
+    pool_members:
+      - 10.1.0.217
+  - datacenter_name: Zone2
+    vip_address: 2.2.2.2
+    pool_members:
+      - 10.2.10.1
+      - 10.2.10.2

@@ -1,0 +1,26 @@
+"{{app_name}}": {
+	"class": "Application",
+	"template": "tcp",
+	"serviceMain": {
+		"class": "Service_TCP",
+		"virtualAddresses": [
+			"{{item.vip_address}}"
+		],
+		"virtualPort": {{app_port}},
+		"pool": "{{app_name}}_pool"
+	},
+	"{{app_name}}_pool": {
+		"class": "Pool",
+        "monitors": [
+            "tcp"
+        ],
+		"members": [
+            {
+                "servicePort": {{server_port}},
+                "serverAddresses": [
+                    "{{ item.pool_members| join('", "') }}"
+                ]
+            }
+        ]
+	}
+}

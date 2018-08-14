@@ -1,0 +1,26 @@
+"{{app_name}}": {
+	"class": "Application",
+	"template": "udp",
+	"serviceMain": {
+		"class": "Service_UDP",
+		"virtualPort": {{app_port}},
+		"virtualAddresses": [
+			"{{item.vip_address}}"
+		],
+		"pool": "{{app_name}}_pool"
+	},
+	"{{app_name}}_pool": {
+		"class": "Pool",
+		"monitors": [
+			"icmp"
+		],
+		"members": [
+            {
+                "servicePort": {{server_port}},
+                "serverAddresses": [
+                    "{{ item.pool_members| join('", "') }}"
+                ]
+            }
+        ]
+	}
+}

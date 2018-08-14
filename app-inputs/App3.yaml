@@ -1,0 +1,15 @@
+app_name: App3
+tenant: Tenant2
+app_template: udp_app_wholee
+app_port: 53
+server_port: 53
+app_locations:
+  - datacenter_name: aws
+    vip_address: 10.1.0.102
+    pool_members:
+      - 10.1.0.217
+  - datacenter_name: Zone1
+    vip_address: 2.2.2.3
+    pool_members:
+      - 10.2.10.1
+      - 10.2.10.2

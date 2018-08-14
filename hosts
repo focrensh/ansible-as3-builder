@@ -1,0 +1,10 @@
+localhost ansible_python_interpreter=/usr/bin/python
+
+[Zone1]
+10.192.75.66 f5_admin_port=443
+
+[Zone2]
+10.192.75.82 f5_admin_port=443
+
+[aws]
+10.3.1.10 f5_admin_port=8443
