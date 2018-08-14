@@ -8,7 +8,14 @@
     - vars/main.yaml
 
   tasks:
-      
+
+
+  - name: Create tmp Directory for Declarations
+    file:
+      path: tmp/
+      state: directory
+
+
   - name: Group all Application Files
     assemble:
       remote_src: False
