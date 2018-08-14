@@ -7,13 +7,14 @@ Builds AS3 declarations based on inputs from variable files provided. Enables th
 * **create_app.yaml** creates AS3 declaration segments based on templates within **j2** directory.
 * **push_config.yaml** merges AS3 segements into single declarations and pushes across all BIG-IPs in the **vars/main.yaml** file
 
-#### Setup
+##### Example Environment Diagram
+![alt text](files/as3_builder.png)
 
 ## Setup
 1. Edit the **hosts** file.
     1. In the examples hosts file there are 3 BIG-IPs (Zone1, Zone2, aws). Update these to match the infrastructure of your orginization.
     1. Make sure to update the localhost device to use the correct python env interpreter.
-1. Update **vars/main.yaml** to reference the `hosts` you created along       with the **Tenants** required for your applications.
+1. Update **vars/main.yaml** to reference the `hosts` you created along with the **Tenants** required for your applications.
 
     ```yaml
     datacenters:
